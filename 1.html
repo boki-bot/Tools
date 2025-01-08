@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age and Time Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            width: 350px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #time {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Age and Time Calculator</h1>
+    <label for="birthdate">Enter your Birthdate:</label>
+    <input type="date" id="birthdate" name="birthdate">
+    <button onclick="calculateAge()">Calculate Age</button>
+    
+    <div id="result"></div>
+    <div id="time"></div>
+</div>
+
+<script>
+    function calculateAge() {
+        var birthdate = document.getElementById("birthdate").value;
+        if (birthdate === "") {
+            alert("Please enter a valid birthdate");
+            return;
+        }
+
+        var birthDateObj = new Date(birthdate);
+        var currentDate = new Date();
+
+        var age = currentDate.getFullYear() - birthDateObj.getFullYear();
+        var monthDifference = currentDate.getMonth() - birthDateObj.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && currentDate.getDate() < birthDateObj.getDate())) {
+            age--;
+        }
+
+        document.getElementById("result").textContent = "Your Age: " + age + " years old";
+    }
+
+    function updateTime() {
+        var currentDate = new Date();
+        var hours = currentDate.getHours();
+        var minutes = currentDate.getMinutes();
+        minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero for minutes
+        var timeString = "Current Time: " + hours + ":" + minutes;
+        
+        document.getElementById("time").textContent = timeString;
+    }
+
+    setInterval(updateTime, 1000); // Update the time every second
+</script>
+
+</body>
+</html>

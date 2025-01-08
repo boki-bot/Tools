@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Math Question Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            width: 450px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 12px;
+            width: 100%;
+            background-color: #6A5ACD;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #5a4ac3;
+        }
+        #question {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #555;
+            word-wrap: break-word;
+            word-break: break-all;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>कक्षा 10 गणित प्रश्न जनरेटर</h1>
+    <button onclick="generateMathQuestion()">नई गणित का प्रश्न प्राप्त करें</button>
+    <div id="question"></div>
+</div>
+
+<script>
+    // Function to generate random numbers within a specific range
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateMathQuestion() {
+        // Generate random numbers for use in the questions
+        var num1 = randomNumber(1, 20);
+        var num2 = randomNumber(1, 20);
+        var num3 = randomNumber(1, 30);
+        var num4 = randomNumber(5, 20);
+        var num5 = randomNumber(5, 15);
+        var num6 = randomNumber(10, 50);
+        var num7 = randomNumber(10, 30);
+        var num8 = randomNumber(10, 40);
+
+        // List of 25 types of math questions with dynamic numbers in Hindi
+        var questions = [
+            // Algebra (Algebraic Expressions)
+            `x के लिए हल करें: ${num1}x + ${num2} = ${num3}x + ${num4}`,
+            `समीकरण को गुणनखंडित करें: x² - ${num1}x + ${num2}`,
+            `x के लिए हल करें: x³ - ${num1}x² + ${num2}x - ${num3} = 0`,
+            `यदि (x - ${num2})(x + ${num3}) = 0 हो, तो x का मान बताएं`,
+            `x के लिए हल करें: ${num1}x² - ${num2}x + ${num3} = 0`,
+            
+            // Geometry (रचनात्मक गणित)
+            `एक त्रिभुज का क्षेत्रफल निकालें, जिसकी आधार ${num1} सेंटीमीटर और ऊचाई ${num2} सेंटीमीटर है।`,
+            `एक समकोण त्रिभुज में, कर्ण ${num1} सेंटीमीटर है और एक भुजा ${num2} सेंटीमीटर है। दूसरी भुजा का मान निकालें।`,
+            `एक आयत का परिमाप निकालें, जिसकी लंबाई ${num1} सेंटीमीटर और चौड़ाई ${num2} सेंटीमीटर है।`,
+            `वृत्त का क्षेत्रफल निकालें, जिसकी त्रिज्या ${num1} सेंटीमीटर है (π = 22/7 का उपयोग करें)।`,
+            `एक खंड के क्षेत्रफल को निकालें, जिसकी त्रिज्या ${num1} सेंटीमीटर और कोण ${num2}° है।`,
+            
+            // Trigonometry (त्रिकोणमिति)
+            `sin(${num1}°) + cos(${num2}°) का मान निकालें।`,
+            `यदि tan θ = ${num3}/${num4}, तो sin θ और cos θ का मान निकालें।`,
+            `cot(${num1}°) का मान निकालें।`,
+            `एक समकोण त्रिभुज में, आधार ${num1} सेंटीमीटर है और कर्ण ${num2} सेंटीमीटर है। ऊचाई का मान निकालें।`,
+            `यह पहचान सत्यापित करें: sin²(${num1}°) + cos²(${num1}°) = 1।`,
+            
+            // Probability (सांभावना)
+            `एक बैग में ${num1} लाल गेंदें और ${num2} नीली गेंदें हैं। एक लाल गेंद निकालने की संभावना बताएं।`,
+            `52 कार्डों के एक पैक में, एक राजा कार्ड निकालने की संभावना बताएं।`,
+            `एक पासा फेंका जाता है। एक सम संख्या आने की संभावना बताएं।`,
+            `यदि एक सिक्का दो बार उछाला जाए, तो दो सिर आने की संभावना बताएं।`,
+            `एक बॉक्स में ${num1} सफेद और ${num2} काली गेंदें हैं, एक गेंद निकाली जाती है। काली गेंद निकालने की संभावना बताएं।`,
+            
+            // Coordinate Geometry (सहसंबंधित रेखागणित)
+            `बिंदु A(${num1}, ${num2}) और B(${num3}, ${num4}) के बीच की दूरी निकालें।`,
+            `बिंदु A(${num1}, ${num2}) और B(${num3}, ${num4}) के मध्य बिंदु को निकालें।`,
+            `बिंदुओं (${num1}, ${num2}) और (${num3}, ${num4}) के बीच रेखा का ढाल निकालें।`,
+            `बिंदु A(${num1}, ${num2}), B(${num3}, ${num4}), और C(${num5}, ${num6}) से बने त्रिभुज का क्षेत्रफल निकालें।`,
+            `यदि दो बिंदुओं के निर्देशांक (2, -3) और (4, 2) हैं, तो उनके बीच की रेखा का ढाल निकालें।`,
+            
+            // Miscellaneous Advanced Questions (विविध उन्नत प्रश्न)
+            `प्राकृतिक संख्याओं का प्रथम 50 तक योग क्या होगा?`,
+            `(5² + 4³) / (7 - 3) का मान निकालें।`,
+            `x के लिए हल करें: 2x + 3y = 12 और 4x - y = 7`,
+            `x = 2 और y = 4 होने पर 3x + 5y का मान निकालें।`,
+            `एक चतुर्भुज में कोणों का योग 360° होता है। यदि तीन कोण 90°, 80° और 110° हैं, तो चौथे कोण का मान क्या होगा?`
+        ];
+        
+        // Randomly select a question from the list
+        var randomIndex = Math.floor(Math.random() * questions.length);
+        var selectedQuestion = questions[randomIndex];
+        
+        // Display the selected question
+        document.getElementById("question").textContent = "गणित प्रश्न: " + selectedQuestion;
+    }
+</script>
+
+</body>
+</html>

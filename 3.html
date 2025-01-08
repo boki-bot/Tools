@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Name Generator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            width: 350px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 12px;
+            width: 100%;
+            background-color: #6A5ACD;
+            color: white;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #5a4ac3;
+        }
+        #name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #555;
+            word-wrap: break-word;
+            word-break: break-all;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #hint {
+            font-size: 14px;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Unique Name Generator</h1>
+    <button onclick="generateName(true)">Generate Name with Hint</button>
+    <button onclick="generateName(false)">Generate Name without Hint</button>
+    <div id="name"></div>
+    <div id="hint"></div>
+</div>
+
+<script>
+    function generateName(withHint) {
+        // Word pool for creating unique names
+        var adjectives = ["Mystic", "Quantum", "Nebula", "Crystal", "Silver", "Lunar", "Obsidian", "Echo", "Vortex", "Solar"];
+        var nouns = ["Phoenix", "Cyborg", "Dragon", "Wolf", "Starlight", "Knight", "Shadow", "Vanguard", "Titan", "Specter"];
+        var randomLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var randomSymbols = "!@#$%^&*()_+-=[]{}|;:,.<>?/";
+        
+        // Pick random words and characters
+        var adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+        var noun = nouns[Math.floor(Math.random() * nouns.length)];
+        var randLetter = randomLetters[Math.floor(Math.random() * randomLetters.length)];
+        var randSymbol = randomSymbols[Math.floor(Math.random() * randomSymbols.length)];
+        
+        // Combine them into a unique name
+        var uniqueName = adj + noun + randLetter + randSymbol;
+        
+        // Show the generated name
+        document.getElementById("name").textContent = "Generated Unique Name: " + uniqueName;
+        
+        if (withHint) {
+            // Show hint if the option is true
+            document.getElementById("hint").textContent = "Hint: The name is a combination of:\n" +
+                "- An adjective (" + adj + ") that adds a mystical or powerful feel.\n" +
+                "- A noun (" + noun + ") representing strength or character, like a mythical creature or force.\n" +
+                "- A random letter (" + randLetter + ") to add a touch of uniqueness.\n" +
+                "- A special symbol (" + randSymbol + ") to give the name a modern, complex touch.";
+        } else {
+            // Clear hint if no hint
+            document.getElementById("hint").textContent = "";
+        }
+    }
+</script>
+
+</body>
+</html>
